@@ -36,11 +36,11 @@ describe(Client) do
     end
   end
 
-  # describe('.all') do
-  #   it('starts off as an empty array') do
-  #     expect(Client.all().to(eq([])))
-  #   end
-  # end
+  describe('.all') do
+    it('starts off as an empty array') do
+      expect(Client.all()).to(eq([]))
+    end
+  end
   #
   # describe('#id') do
   #   it('returns the id of a client') do

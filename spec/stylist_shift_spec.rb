@@ -35,12 +35,12 @@ describe(StylistShift) do
       expect(stylist_shift1.fri()).to(eq(false))
     end
   end
-  #
-  # describe('.all') do
-  #   it('starts off as an empty array') do
-  #     expect(Stylist.all().to(eq([])))
-  #   end
-  # end
+
+  describe('.all') do
+    it('starts off as an empty array') do
+      expect(StylistShift.all()).to(eq([]))
+    end
+  end
 
   # describe('#id') do
   #   it('returns the id of a stylist shift') do

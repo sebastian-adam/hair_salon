@@ -21,12 +21,12 @@ describe(Stylist) do
       expect(stylist1.phone_num()).to(eq('1112223333'))
     end
   end
-  #
-  # describe('.all') do
-  #   it('starts off as an empty array') do
-  #     expect(Stylist.all().to(eq([])))
-  #   end
-  # end
+
+  describe('.all') do
+    it('starts off as an empty array') do
+      expect(Stylist.all()).to(eq([]))
+    end
+  end
 
   # describe('#id') do
   #   it('returns the id of a stylist') do
@@ -34,5 +34,5 @@ describe(Stylist) do
   #     expect(stylist1.id()).to(be_an_instance_of(Fixnum))
   #   end
   # end
-  
+
 end
