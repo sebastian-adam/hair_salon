@@ -22,17 +22,17 @@ describe(Stylist) do
     end
   end
   #
-  # describe('#first_name') do
-  #   it('returns the first name of a stylist') do
-  #     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
-  #     expect(stylist1.first_name()).to(eq('Betty'))
-  #   end
-  # end
-  #
   # describe('.all') do
   #   it('starts off as an empty array') do
   #     expect(Stylist.all().to(eq([])))
   #   end
   # end
 
+  # describe('#id') do
+  #   it('returns the id of a stylist') do
+  #     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+  #     expect(stylist1.id()).to(be_an_instance_of(Fixnum))
+  #   end
+  # end
+  
 end
