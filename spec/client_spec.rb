@@ -8,12 +8,12 @@ describe(Client) do
     end
   end
 
-  # describe('#first_name') do
-  #   it('returns the first name of a given client') do
-  #     client1 = Client.new({:id => nil, :first_name => 'Sue', :last_name => 'Davis', :phone_num => '7778889999', :typical_package => 'shampoo and trim', :stylist_id => 1})
-  #     expect(client1.first_name()).to(eq('Sue'))
-  #   end
-  # end
+  describe('#last_name') do
+    it('returns the last name of a given client') do
+      client1 = Client.new({:id => nil, :first_name => 'Sue', :last_name => 'Davis', :phone_num => '7778889999', :typical_package => 'shampoo and trim', :stylist_id => 1})
+      expect(client1.last_name()).to(eq('Davis'))
+    end
+  end
   #
   # describe('#first_name') do
   #   it('returns the first name of a given client') do
