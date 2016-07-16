@@ -25,4 +25,8 @@ class Client
     clients
   end
 
+  define_method(:==) do |another_client|
+    self.id().==(another_client.id()).&(self.first_name().==(another_client.first_name())).&(self.last_name().==(another_client.last_name())).&(self.phone_num().==(another_client.phone_num())).&(self.typical_package().==(another_client.typical_package())).&(self.stylist_id().==(another_client.stylist_id()))
+  end
+
 end

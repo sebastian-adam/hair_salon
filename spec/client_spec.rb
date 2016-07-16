@@ -41,6 +41,15 @@ describe(Client) do
       expect(Client.all()).to(eq([]))
     end
   end
+
+  describe('#==') do
+    it('is the same client if it has the same attributes') do
+      client1 = Client.new({:id => nil, :first_name => 'Sue', :last_name => 'Davis', :phone_num => '7778889999', :typical_package => 'shampoo and trim', :stylist_id => 1})
+      client2 = Client.new({:id => nil, :first_name => 'Sue', :last_name => 'Davis', :phone_num => '7778889999', :typical_package => 'shampoo and trim', :stylist_id => 1})
+      expect(client1).to(eq(client2))
+    end
+  end
+
   #
   # describe('#id') do
   #   it('returns the id of a client') do

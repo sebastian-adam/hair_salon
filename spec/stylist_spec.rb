@@ -28,6 +28,14 @@ describe(Stylist) do
     end
   end
 
+  describe('#==') do
+    it('is the same stylist if it has the same attributes') do
+      stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+      stylist2 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+      expect(stylist1).to(eq(stylist2))
+    end
+  end
+
   # describe('#id') do
   #   it('returns the id of a stylist') do
   #     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
