@@ -34,9 +34,20 @@ class StylistShift
   define_method(:==) do |another_stylist_shift|
     self.id().==(another_stylist_shift.id()).&(self.mon().==(another_stylist_shift.mon())).&(self.tue().==(another_stylist_shift.tue())).&(self.wed().==(another_stylist_shift.wed())).&(self.thu().==(another_stylist_shift.thu())).&(self.fri().==(another_stylist_shift.fri())).&(self.client_appt().==(another_stylist_shift.client_appt())).&(self.client_id().==(another_stylist_shift.client_id())).&(self.stylist_id().==(another_stylist_shift.stylist_id()))
   end
-end
 
-define_method(:save) do
-  result = DB.exec("INSERT INTO stylist_shifts (mon, tue, wed, thu, fri, client_appt, client_id, stylist_id) VALUES ('#{@mon}', '#{@tue}', '#{@wed}', '#{@thu}', '#{@fri}', '#{@client_appt}', #{@client_id},  #{@stylist_id}) RETURNING id;")
-  @id = result.first().fetch('id').to_i()
+  define_method(:save) do
+    result = DB.exec("INSERT INTO stylist_shifts (mon, tue, wed, thu, fri, client_appt, client_id, stylist_id) VALUES ('#{@mon}', '#{@tue}', '#{@wed}', '#{@thu}', '#{@fri}', '#{@client_appt}', #{@client_id},  #{@stylist_id}) RETURNING id;")
+    @id = result.first().fetch('id').to_i()
+  end
+
+  define_singleton_method(:find) do |id|
+    found_stylist_shift = nil
+    StylistShift.all().each() do |stylist_shift|
+      if stylist_shift.id().==(id)
+        found_stylist_shift = stylist_shift
+      end
+    end
+    found_stylist_shift
+  end
+
 end
