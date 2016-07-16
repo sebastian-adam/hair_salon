@@ -68,3 +68,70 @@
 <% else %>
   <h3>There are no stylists in the database. <span id="add_stylist_prompt">Please document your employees.</span></h3>
 <% end %>
+
+<hr class="alt_hr">
+
+<h3>Add a stylist:</h3>
+
+<form action="/stylists" method="post">
+  <label for="first_name">First name:</label>
+  <input type="text" name="first_name" required>
+
+  <label for="last_name">Last Name:</label>
+  <input type="text" name="last_name" required>
+
+  <label for="phone_num">Phone Number:</label>
+  <input type="text" name="phone_num" required>
+
+  <button class="button" type="submit" name="button">Add stylist</button>
+</form>
+
+<hr>
+
+
+<% if @stylists.any?() %>
+  <% @stylists.each() do |stylist| %>
+    <form action="/stylists/<%= stylist.id() %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <h3 class="table_title">Manage your stylists</h3>
+  <button id="edit_reveal" class="table_data edit_button" type="button">EDIT</button>
+  <button class="edit_input edit_button" type="submit">Save Changes</button>
+  <table>
+    <tr class="table_nav">
+      <td>NAME</td>
+      <td>PHONE</td>
+      <td>EMPLOYED</td>
+    </tr>
+    <% @stylists.each() do |stylist| %>
+      <tr>
+        <td>
+          <div class="edit_input">
+            <input type="text" name="first_name" value="<%= stylist.first_name() %>">
+            <input type="text" name="last_name" value="<%= stylist.last_name() %>">
+          </div>
+          <div class="table_data">
+            <%= stylist.first_name() %> <%= stylist.last_name() %>
+          </div>
+        </td>
+        <td>
+          <div class="edit_input">
+            <input type="text" name="phone_num" value="<%= stylist.phone_num() %>">
+          </div>
+          <div class="table_data">
+            <%= stylist.phone_num() %>
+          </div>
+        </td>
+    </form>
+        <td>
+          <form action="/stylists/<%= stylist.id() %>" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <button class="delete_button" type="submit">REMOVE</button>
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3>There are no stylists in the database. <span id="add_stylist_prompt">Please document your employees.</span></h3>
+<% end %>
