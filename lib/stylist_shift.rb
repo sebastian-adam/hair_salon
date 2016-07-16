@@ -62,9 +62,9 @@ class StylistShift
     @stylist_id = attributes.fetch(:stylist_id)
     DB.exec("UPDATE stylist_shifts SET mon = '#{@mon}', tue = '#{@tue}', wed = '#{@wed}', thu = '#{@thu}', fri = '#{@fri}', client_appt = '#{@client_appt}', client_id = #{@client_id}, stylist_id = '#{@stylist_id}' WHERE id = #{@id};")
   end
-#
-# define_method(:delete) do
-#   DB.exec("DELETE FROM books WHERE id = #{self.id()};")
-# end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM stylist_shifts WHERE id = #{self.id()};")
+  end
 
 end

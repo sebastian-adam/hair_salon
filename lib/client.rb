@@ -54,4 +54,8 @@ class Client
     DB.exec("UPDATE clients SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone_num = '#{@phone_num}', typical_package = '#{@typical_package}', stylist_id = '#{@stylist_id}' WHERE id = #{@id};")
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
+  end
+
 end

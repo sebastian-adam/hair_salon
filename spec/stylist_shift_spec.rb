@@ -106,4 +106,15 @@ describe(StylistShift) do
     end
   end
 
+  describe('#delete') do
+    it('lets user delete a stylist_shift from the database') do
+      stylist_shift1 = StylistShift.new({:id => nil, :mon => "t", :tue => "t", :wed => "f", :thu => "f", :fri => "f", :client_appt => "monday", :client_id => 1, :stylist_id => 1})
+      stylist_shift1.save()
+      stylist_shift2 = StylistShift.new({:id => nil, :mon => "f", :tue => "f", :wed => "t", :thu => "t", :fri => "t", :client_appt => "monday", :client_id => 1, :stylist_id => 1})
+      stylist_shift2.save()
+      stylist_shift1.delete()
+      expect(StylistShift.all()).to(eq([stylist_shift2]))
+    end
+  end
+
 end
