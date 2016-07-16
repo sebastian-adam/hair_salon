@@ -101,3 +101,15 @@ describe('edit client path', {:type => :feature}) do
     expect(page).to have_content("Sam Hammy")
   end
 end
+
+describe('delete client path', {:type => :feature}) do
+  it('allows the user to delete a client in the database') do
+    stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+    stylist1.save()
+    client1 = Client.new({:id => nil, :first_name => 'Sue', :last_name => 'Davis', :phone_num => '7778889999', :typical_package => 'shampoo and trim', :stylist_id => 1})
+    client1.save()
+    visit('/')
+    click_button('delete_client')
+    expect(page).to have_no_content(client1.first_name())
+  end
+end
