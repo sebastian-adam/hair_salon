@@ -10,7 +10,7 @@ Development Database: hair_salon_test
 Resource Names: clients, stylists, stylist_shifts
 Attributes (clients): id, first_name, last_name, phone_num, typical_package, stylist_id
 Attributes (stylists): id, first_name, last_name, phone_num
-Attributes (stylist-shifts): id, mon, tue, wed, thu, fri, stylist_id
+Attributes (stylist_shifts): id, mon, tue, wed, thu, fri, stylist_id
 
 
 In PSQL:

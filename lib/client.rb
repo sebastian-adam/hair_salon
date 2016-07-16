@@ -34,4 +34,16 @@ class Client
     @id = result.first().fetch('id').to_i()
   end
 
+  define_singleton_method(:find_by_title) do |title|
+    found_books = []
+    found_book = nil
+    Book.all().each() do |book|
+      if book.title().==(title)
+        found_book = book
+        found_books.push(book)
+      end
+    end
+    found_books
+  end
+
 end
