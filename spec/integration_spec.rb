@@ -26,6 +26,21 @@ describe('add stylist path', {:type => :feature}) do
   end
 end
 
+describe('edit stylist path', {:type => :feature}) do
+  it('allows user to add a new stylist') do
+    stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+    stylist1.save()
+    visit('/')
+    click_on("#{stylist1.first_name()} #{stylist1.last_name()}")
+    click_button('EDIT')
+    fill_in('first_name', :with => 'Jen')
+    fill_in('last_name', :with => 'Smith')
+    fill_in('phone_num', :with => '3334445555')
+    click_button('Save Changes')
+    expect(page).to have_content("Jen Smith 3334445555")
+  end
+end
+
 describe('view client path', {:type => :feature}) do
   it('shows the user the list of clients in the database') do
     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
@@ -50,6 +65,6 @@ describe('add client path', {:type => :feature}) do
     select "Cut and Style", :from => "typical_package"
     select "#{stylist1.first_name()} #{stylist1.last_name()}", :from => "stylist_id"
     click_button('Add client')
-    expect(page).to have_content("Kim Davis 111222333 Cut and Style")
+    expect(page).to have_content("Kim Davis 111222333 Cut and Style #{stylist1.first_name()} #{stylist1.last_name()}")
   end
 end
