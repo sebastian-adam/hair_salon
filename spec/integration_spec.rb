@@ -38,3 +38,18 @@ describe('view client path', {:type => :feature}) do
     expect(page).to have_content(client1.first_name())
   end
 end
+
+describe('add client path', {:type => :feature}) do
+  it('allows user to add a new client') do
+    stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+    stylist1.save()
+    visit('/')
+    fill_in('first_name_client', :with => 'Kim')
+    fill_in('last_name_client', :with => 'Davis')
+    fill_in('phone_num_client', :with => '111222333')
+    select "Cut and Style", :from => "typical_package"
+    select "#{stylist1.first_name()} #{stylist1.last_name()}", :from => "stylist_id"
+    click_button('Add client')
+    expect(page).to have_content("Kim Davis 111222333 Cut and Style")
+  end
+end

@@ -25,9 +25,9 @@ post('/stylists') do
 end
 
 post('/clients') do
-  first_name = params.fetch('first_name')
-  last_name = params.fetch('last_name')
-  phone_num = params.fetch('phone_num')
+  first_name = params.fetch('first_name_client')
+  last_name = params.fetch('last_name_client')
+  phone_num = params.fetch('phone_num_client')
   typical_package = params.fetch('typical_package')
   stylist_id = params.fetch('stylist_id')
   client = Client.new({:id => nil, :first_name => first_name, :last_name => last_name, :phone_num => phone_num, :typical_package => typical_package, :stylist_id => stylist_id})
