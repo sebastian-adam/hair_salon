@@ -51,18 +51,19 @@ describe(StylistShift) do
   end
 
   describe('#save') do
-    it('lets you save the Stylist Shift object to the database') do
+    it('lets user save the Stylist Shift object to the database') do
       stylist_shift1 = StylistShift.new({:id => nil, :mon => "t", :tue => "t", :wed => "f", :thu => "f", :fri => "f", :stylist_id => 1})
       stylist_shift1.save()
       expect(StylistShift.all()).to(eq([stylist_shift1]))
     end
   end
 
-  # describe('#id') do
-  #   it('returns the id of a stylist shift') do
-  #     stylist_shift1 = StylistShift.new({:id => nil, :mon => "t", :tue => "t", :wed => "f", :thu => "f", :fri => "f", :stylist_id => 1})
-  #     expect(stylist_shift1.id()).to(be_an_instance_of(Fixnum))
-  #   end
-  # end
+  describe('#id') do
+    it('returns the id of a stylist shift') do
+      stylist_shift1 = StylistShift.new({:id => nil, :mon => "t", :tue => "t", :wed => "f", :thu => "f", :fri => "f", :stylist_id => 1})
+      stylist_shift1.save()
+      expect(stylist_shift1.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
 
 end
