@@ -1,0 +1,128 @@
+/*GENERAL*/
+
+button {
+  background-color: #FF9AB7;
+  color: white;
+  border: none;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: 0 0 5px silver;
+}
+
+hr {
+  color: silver;
+  background-color: silver;
+  border-color: silver;
+}
+
+.alt_hr {
+  color: #FFE89A;
+  background-color: #FFE89A;
+  border-color: #FFE89A;
+}
+
+/*HEADER*/
+
+#header {
+  background-color: #FF9AB7;
+  overflow:auto;
+  margin-top: 10px;
+  overflow:auto;
+  color: white;
+  padding: 20px 30px 30px 30px;
+  margin-top: 10px;
+}
+
+#header h1 {
+  font-size: 70px;
+}
+
+#faux_hair {
+  color: #FFE89A;
+}
+
+.glyphicon-scissors {
+  color: white;
+}
+
+/*TABLES*/
+
+table {
+  width: 60%;
+  border: 1px solid black;
+  clear: both;
+
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.table_nav {
+  font-weight: bold;
+}
+
+.table_title {
+  float: left;
+  margin-right: 10px;
+}
+
+#add_stylist_prompt {
+  color: #FF9AB7;
+}
+
+.delete_button {
+  background-color: silver;
+  border: none;
+  color: white;
+}
+
+.edit_button {
+  transform: translateY(85%);
+}
+
+.edit_input, #save_changes {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+.edit_link {
+  color: #0000cd;
+}
+
+#lib_button {
+  background-color: inherit;
+}
+
+.home_button {
+  background-color: black;
+  color: white;
+}
+
+#search_title, #seach_author {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  transform: translateY(-25%);
+}
+
+#search_title {
+  float: left;
+  margin-right: 30px;
+}
+
+#overdue {
+  color: red;
+  float: left;
+  margin-right: 10px;
+}
