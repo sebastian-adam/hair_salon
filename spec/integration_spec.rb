@@ -41,6 +41,16 @@ describe('edit stylist path', {:type => :feature}) do
   end
 end
 
+describe('delete stylist path', {:type => :feature}) do
+  it('allows the user to delete a stylist in the database') do
+    stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+    stylist1.save()
+    visit('/')
+    click_button('REMOVE')
+    expect(page).to have_no_content(stylist1.first_name())
+  end
+end
+
 describe('view client path', {:type => :feature}) do
   it('shows the user the list of clients in the database') do
     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
