@@ -7,7 +7,7 @@
 
   <div class="wrapper">
     <div class="add_object">
-      <h3>Add a <em>stylist</em>:</h3>
+      <h3>Add a <span class="title">stylist</span>:</h3>
       <form action="/stylists" method="post">
         <label for="first_name">First name:</label>
         <input type="text" name="first_name" required>
@@ -25,13 +25,7 @@
     <hr>
 
     <% if @stylists.any?() %>
-      <% @stylists.each() do |stylist| %>
-        <form action="/stylists/<%= stylist.id() %>" method="post">
-          <input type="hidden" name="_method" value="patch">
-      <% end %>
-      <h3 class="table_title">Manage your stylists</h3>
-      <button id="edit_stylist_reveal" class="stylist_table_data edit_button" type="button">EDIT</button>
-      <button class="edit_stylist_input edit_button" type="submit">Save Changes</button>
+    <h3 class="table_title">Manage your stylists</h3>
       <table>
         <tr id="table_nav_stylist">
           <td>NAME</td>
@@ -41,18 +35,11 @@
         <% @stylists.each() do |stylist| %>
           <tr>
             <td>
-              <div class="edit_stylist_input">
-                <input type="text" name="first_name" value="<%= stylist.first_name() %>">
-                <input type="text" name="last_name" value="<%= stylist.last_name() %>">
-              </div>
               <div class="stylist_table_data">
-                <%= stylist.first_name() %> <%= stylist.last_name() %>
+                <a href="/stylists/<%= stylist.id() %>"><%= stylist.first_name() %> <%= stylist.last_name() %></a>
               </div>
             </td>
             <td>
-              <div class="edit_stylist_input">
-                <input type="text" name="phone_num" value="<%= stylist.phone_num() %>">
-              </div>
               <div class="stylist_table_data">
                 <%= stylist.phone_num() %>
               </div>
@@ -72,22 +59,25 @@
     <% end %>
   </div>
 
-  <hr class="alt_hr">
-  <br>
+  <% if @stylists.any?() %>
 
-  <div class="wrapper">
-    <% if @stylists.any?() %>
+    <hr class="alt_hr">
+    <br>
+
+    <div class="wrapper">
       <div class="add_object">
-        <h3>Add a <em>client</em>:</h3>
+        <h3>Add a <span class="title">client</span>:</h3>
         <form action="/clients" method="post">
           <label for="first_name">First name:</label>
           <input type="text" name="first_name" required>
-
           <label for="last_name">Last Name:</label>
           <input type="text" name="last_name" required>
-
           <label for="phone_num">Phone Number:</label>
           <input type="text" name="phone_num" required>
+          <button id="client_button" type="submit" name="button">Add client</button>
+
+          <br>
+          <br>
 
           <label for="typical_package">Typical Package:</label>
           <select name="typical_package">
@@ -97,28 +87,19 @@
             <option value="Blowout">Blowout</option>
             <option value="Hair Extensions">Hair Extensions</option>
           </select>
-
           <label for="stylist_id">Prefered Stylist:</label>
           <select name="stylist_id">
             <% @stylists.each() do |stylist| %>
-              <option value='<%= stylist.id() %>'><%= stylist.first_name() %> <%= stylist.last_name() %></option>
+                <option value='<%= stylist.id() %>'><%= stylist.first_name() %> <%= stylist.last_name() %></option>
             <% end %>
           </select>
-
-          <button id="client_button" type="submit" name="button">Add client</button>
         </form>
       </div>
 
       <hr>
 
-      <% if @clients.any?() %>
-        <% @clients.each() do |client| %>
-          <form action="/clients/<%= client.id() %>" method="post">
-            <input type="hidden" name="_method" value="patch">
-        <% end %>
+      <% if @clients.any?() & @stylists.any?() %>
         <h3 class="table_title">Manage your clients</h3>
-        <button id="edit_client_reveal" class="client_table_data edit_button" type="button">EDIT</button>
-        <button class="edit_client_input edit_button" type="submit">Save Changes</button>
         <table>
           <tr id="table_nav_client">
             <td>NAME</td>
@@ -130,50 +111,30 @@
           <% @clients.each() do |client| %>
             <tr>
               <td>
-                <div class="edit_client_input">
-                  <input type="text" name="first_name" value="<%= client.first_name() %>">
-                  <input type="text" name="last_name" value="<%= client.last_name() %>">
-                </div>
                 <div class="client_table_data">
-                  <%= client.first_name() %> <%= client.last_name() %>
+                  <a href="/clients/<%= client.id() %>"><%= client.first_name() %> <%= client.last_name() %></a>
                 </div>
               </td>
               <td>
-                <div class="edit_client_input">
-                  <input type="text" name="phone_num" value="<%= client.phone_num() %>">
-                </div>
                 <div class="client_table_data">
                   <%= client.phone_num() %>
                 </div>
               </td>
               <td>
-                <div class="edit_client_input">
-                  <select name="typical_package">
-                    <option value="Cut and Style">Cut and Style</option>
-                    <option value="Color">Color</option>
-                    <option value="Highlights">Highlights</option>
-                    <option value="Blowout">Blowout</option>
-                    <option value="Hair Extensions">Hair Extensions</option>
-                  </select>
-                </div>
                 <div class="client_table_data">
                   <%= client.typical_package() %>
                 </div>
               </td>
               <td>
-                <div class="edit_client_input">
-                  <select name="stylist_id">
-                    <% @stylists.each() do |stylist| %>
-                      <option value='<%= stylist.id() %>'><%= stylist.first_name() %> <%= stylist.last_name() %></option>
-                    <% end %>
-                  </select>
-                </div>
                 <div class="client_table_data">
-                  <%= Stylist.find(client.stylist_id().to_i()).first_name()
-                 %>
+                  <% if Stylist.find(client.stylist_id().to_i()) %>
+                    <%= Stylist.find(client.stylist_id().to_i()).first_name() %>
+                    <%= Stylist.find(client.stylist_id().to_i()).last_name() %>
+                  <% else %>
+                    None
+                  <% end %>
                 </div>
               </td>
-          </form>
               <td>
                 <form action="/clients/<%= client.id() %>" method="post">
                   <input name="_method" type="hidden" value="delete">

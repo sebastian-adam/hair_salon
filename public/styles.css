@@ -13,17 +13,11 @@ body {
   box-shadow: -10px -10px 10px silver, 10px 10px 10px silver, 10px -10px 10px silver, -10px 10px 10px silver;
   padding: 20px;
   margin: 0 10px;
+  border-radius: 25px;
 }
 
-button {
-  background-color: #FF9AB7;
-  color: white;
-  border: none;
-}
-
-input:focus {
-  outline: none !important;
-  box-shadow: 0 0 5px silver;
+.title {
+  font-style: italic;
 }
 
 hr {
@@ -46,6 +40,57 @@ hr {
   padding: 20px 30px 30px;
 }
 
+input:focus {
+  outline: none !important;
+  box-shadow: 0 0 5px silver;
+}
+
+button {
+  background-color: #FF9AB7;
+  color: white;
+  border: none;
+}
+
+.home_button {
+  color: #FFE89A;
+  border: none;
+  float: right;
+}
+
+#home_from_stylist {
+  background-color: #BA73E2;
+}
+
+#home_from_client {
+  background-color: #4CE8CB;
+}
+
+a:link {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: #FF9AB7;
+  text-decoration: none;
+}
+
+.home_link:link {
+  color: #FFE89A;
+}
+
+.home_link:visited {
+  color: #FFE89A;
+}
+
+.home_link:hover {
+  color: #FFE89A;
+  text-decoration: none;
+}
+
 /*HEADER*/
 
 #header {
@@ -57,6 +102,7 @@ hr {
   color: white;
   padding: 20px 30px 30px 30px;
   text-align: center;
+  border-radius: 25px;
 }
 
 #header h1 {

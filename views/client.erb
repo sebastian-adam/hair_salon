@@ -1,0 +1,74 @@
+<div id="container">
+  <div id="header">
+    <h1>Hair Salon Portal <span id="faux_hair">---<span class="glyphicon glyphicon-scissors"></span>------</span></h1>
+  </div>
+
+  <br>
+
+  <div class="wrapper">
+    <form action="/clients/<%= @client.id() %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <h3 class="table_title"><%= @client.first_name() %>'s profile</h3>
+      <button id="edit_client_reveal" class="client_table_data edit_button" type="button">EDIT</button>
+      <button class="edit_client_input edit_button" type="submit">Save Changes</button>
+      <button class="home_button" id="home_from_client" type="button"><a class="home_link" href="/">BACK</a></button>
+      <table>
+        <tr id="table_nav_client">
+          <td>NAME</td>
+          <td>PHONE</td>
+          <td>TYPICAL PACKAGE</td>
+          <td>PREFERED STYLIST</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="edit_client_input">
+              <input type="text" name="first_name" value="<%= @client.first_name() %>">
+              <input type="text" name="last_name" value="<%= @client.last_name() %>">
+            </div>
+            <div class="client_table_data">
+              <%= @client.first_name() %> <%= @client.last_name() %>
+            </div>
+          </td>
+          <td>
+            <div class="edit_client_input">
+              <input type="text" name="phone_num" value="<%= @client.phone_num() %>">
+            </div>
+            <div class="client_table_data">
+              <%= @client.phone_num() %>
+            </div>
+          </td>
+          <td>
+            <div class="edit_client_input">
+              <select name="typical_package">
+                <option value="Cut and Style">Cut and Style</option>
+                <option value="Color">Color</option>
+                <option value="Highlights">Highlights</option>
+                <option value="Blowout">Blowout</option>
+                <option value="Hair Extensions">Hair Extensions</option>
+              </select>
+            </div>
+            <div class="client_table_data">
+              <%= @client.typical_package() %>
+            </div>
+          </td>
+          <td>
+            <div class="edit_client_input">
+              <select name="stylist_id">>
+                <% @stylists.each() do |stylist| %>
+                  <option value='<%= stylist.id() %>'><%= stylist.first_name() %> <%= stylist.last_name() %></option>
+                <% end %>
+              </select>
+            </div>
+            <div class="client_table_data">
+              <% if Stylist.find(@client.stylist_id().to_i()) %>
+                <%= Stylist.find(@client.stylist_id().to_i()).first_name() %> <%= Stylist.find(@client.stylist_id().to_i()).last_name() %>
+              <% else %>
+                None
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

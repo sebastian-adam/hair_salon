@@ -1,0 +1,42 @@
+<div id="container">
+  <div id="header">
+    <h1>Hair Salon Portal <span id="faux_hair">---<span class="glyphicon glyphicon-scissors"></span>------</span></h1>
+  </div>
+
+  <br>
+
+  <div class="wrapper">
+    <form action="/stylists/<%= @stylist.id() %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <h3 class="table_title"><%= @stylist.first_name() %>'s profile</h3>
+      <button id="edit_stylist_reveal" class="stylist_table_data edit_button" type="button">EDIT</button>
+      <button class="edit_stylist_input edit_button" type="submit">Save Changes</button>
+      <button class="home_button" id="home_from_stylist" type="button"><a class="home_link" href="/">BACK</a></button>
+      <table>
+        <tr id="table_nav_stylist">
+          <td>NAME</td>
+          <td>PHONE</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="edit_stylist_input">
+              <input type="text" name="first_name" value="<%= @stylist.first_name() %>">
+              <input type="text" name="last_name" value="<%= @stylist.last_name() %>">
+            </div>
+            <div class="stylist_table_data">
+              <%= @stylist.first_name() %> <%= @stylist.last_name() %>
+            </div>
+          </td>
+          <td>
+            <div class="edit_stylist_input">
+              <input type="text" name="phone_num" value="<%= @stylist.phone_num() %>">
+            </div>
+            <div class="stylist_table_data">
+              <%= @stylist.phone_num() %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

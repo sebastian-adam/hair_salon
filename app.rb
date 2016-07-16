@@ -2,7 +2,6 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/client')
 require('./lib/stylist')
-require('./lib/stylist_shift')
 require('pg')
 also_reload('lib/**/*.rb')
 
@@ -38,6 +37,20 @@ post('/clients') do
   erb(:index)
 end
 
+get('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @stylists = Stylist.all()
+  @clients = Client.all()
+  erb(:stylist)
+end
+
+get('/clients/:id') do
+  @client = Client.find(params.fetch('id').to_i())
+  @stylists = Stylist.all()
+  @clients = Client.all()
+  erb(:client)
+end
+
 patch('/stylists/:id') do
   first_name = params.fetch('first_name')
   last_name = params.fetch('last_name')
@@ -46,7 +59,7 @@ patch('/stylists/:id') do
   @stylist.update({:first_name => first_name, :last_name => last_name, :phone_num => phone_num})
   @stylists = Stylist.all()
   @clients = Client.all()
-  erb(:index)
+  erb(:stylist)
 end
 
 patch('/clients/:id') do
@@ -59,11 +72,12 @@ patch('/clients/:id') do
   @client.update({:first_name => first_name, :last_name => last_name, :phone_num => phone_num, :typical_package => typical_package, :stylist_id => stylist_id})
   @stylists = Stylist.all()
   @clients = Client.all()
-  erb(:index)
+  erb(:client)
 end
 
 delete('/stylists/:id') do
   @stylist = Stylist.find(params.fetch('id').to_i())
+  @client = Client.find(@stylist.id())
   @stylist.delete()
   @stylists = Stylist.all()
   @clients = Client.all()

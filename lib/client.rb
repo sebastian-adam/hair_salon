@@ -26,7 +26,7 @@ class Client
   end
 
   define_method(:==) do |another_client|
-    self.id().==(another_client.id()).&(self.first_name().==(another_client.first_name())).&(self.last_name().==(another_client.last_name())).&(self.phone_num().==(another_client.phone_num())).&(self.typical_package().==(another_client.typical_package())).&(self.stylist_id().==(another_client.stylist_id()))
+    self.id().==(another_client.id()).&(self.first_name().==(another_client.first_name())).&(self.last_name().==(another_client.last_name())).&(self.phone_num().==(another_client.phone_num())).&(self.typical_package().==(another_client.typical_package()))
   end
 
   define_method(:save) do
@@ -55,6 +55,7 @@ class Client
   end
 
   define_method(:delete) do
+
     DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
 
