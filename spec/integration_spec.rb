@@ -15,6 +15,17 @@ describe('view stylist path', {:type => :feature}) do
   end
 end
 
+describe('add stylist path', {:type => :feature}) do
+  it('allows user to add a new stylist') do
+    visit('/')
+    fill_in('first_name', :with => 'Kim')
+    fill_in('last_name', :with => 'Davis')
+    fill_in('phone_num', :with => '111222333')
+    click_button('Add stylist')
+    expect(page).to have_content("Kim Davis 111222333")
+  end
+end
+
 describe('view client path', {:type => :feature}) do
   it('shows the user the list of clients in the database') do
     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
