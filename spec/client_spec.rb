@@ -50,6 +50,14 @@ describe(Client) do
     end
   end
 
+  describe('#save') do
+    it('lets you save the Client object to the database') do
+      client1 = Client.new({:id => nil, :first_name => 'Sue', :last_name => 'Davis', :phone_num => '7778889999', :typical_package => 'shampoo and trim', :stylist_id => 1})
+      client1.save()
+      expect(Client.all()).to(eq([client1]))
+    end
+  end
+
   #
   # describe('#id') do
   #   it('returns the id of a client') do

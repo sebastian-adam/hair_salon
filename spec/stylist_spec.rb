@@ -36,6 +36,14 @@ describe(Stylist) do
     end
   end
 
+  describe('#save') do
+    it('lets you save the Stylist object to the database') do
+      stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
+      stylist1.save()
+      expect(Stylist.all()).to(eq([stylist1]))
+    end
+  end
+
   # describe('#id') do
   #   it('returns the id of a stylist') do
   #     stylist1 = Stylist.new({:id => nil, :first_name => 'Betty', :last_name => 'Rogers', :phone_num => '1112223333'})
