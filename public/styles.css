@@ -1,5 +1,20 @@
 /*GENERAL*/
 
+body {
+  background-color: #FDFDFD
+}
+
+#container {
+  margin-bottom: 50px;
+}
+
+.wrapper {
+  background-color: white;
+  box-shadow: -10px -10px 10px silver, 10px 10px 10px silver, 10px -10px 10px silver, -10px 10px 10px silver;
+  padding: 20px;
+  margin: 0 10px;
+}
+
 button {
   background-color: #FF9AB7;
   color: white;
@@ -19,8 +34,16 @@ hr {
 
 .alt_hr {
   color: #FFE89A;
-  background-color: #FFE89A;
+  background-color: inherit;
   border-color: #FFE89A;
+  border-width: thick;
+  border-style: dashed;
+  margin: 40px 0 20px;
+}
+
+.add_object {
+  background-color: lightgrey;
+  padding: 20px 30px 30px;
 }
 
 /*HEADER*/
@@ -28,11 +51,12 @@ hr {
 #header {
   background-color: #FF9AB7;
   overflow:auto;
-  margin-top: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   overflow:auto;
   color: white;
   padding: 20px 30px 30px 30px;
-  margin-top: 10px;
+  text-align: center;
 }
 
 #header h1 {
@@ -50,10 +74,10 @@ hr {
 /*TABLES*/
 
 table {
-  width: 60%;
+  width: 100%;
   border: 1px solid black;
   clear: both;
-  
+  /*background-color: lightblue;*/
 }
 
 td {
@@ -61,16 +85,35 @@ td {
   padding: 5px;
 }
 
-.table_nav {
+#table_nav_stylist {
   font-weight: bold;
+  background-color: #4CE8CB;
+}
+
+#table_nav_client {
+  font-weight: bold;
+  background-color: #BA73E2;
+}
+
+#stylist_button {
+  background-color: #4CE8CB;
+  color: white;
+  border: none;
+}
+
+#client_button {
+  background-color: #BA73E2;
+  color: white;
+  border: none;
 }
 
 .table_title {
   float: left;
   margin-right: 10px;
+  margin-top: 0px;
 }
 
-#add_stylist_prompt {
+.add_prompt {
   color: #FF9AB7;
 }
 
@@ -80,49 +123,6 @@ td {
   color: white;
 }
 
-.edit_button {
-  transform: translateY(85%);
-}
-
-.edit_input, #save_changes {
+.edit_client_input, .edit_stylist_input, #save_changes {
   display: none;
-}
-
-
-
-
-
-
-
-
-
-.edit_link {
-  color: #0000cd;
-}
-
-#lib_button {
-  background-color: inherit;
-}
-
-.home_button {
-  background-color: black;
-  color: white;
-}
-
-#search_title, #seach_author {
-  display: inline-block;
-  margin: 0 auto;
-  position: relative;
-  transform: translateY(-25%);
-}
-
-#search_title {
-  float: left;
-  margin-right: 30px;
-}
-
-#overdue {
-  color: red;
-  float: left;
-  margin-right: 10px;
 }

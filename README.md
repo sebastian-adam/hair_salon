@@ -1,5 +1,5 @@
 As a salon owner, I want to view, add, update and delete stylists.
-As a salon owner, I want to view, add, update and delete stylist shifts.
+<!-- As a salon owner, I want to view, add, update and delete stylist shifts. -->
 As a salon owner, I want to view, add, update and delete clients.
 As a salon owner, I want to add clients to and delete clients from a stylist.
 
