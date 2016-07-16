@@ -97,4 +97,13 @@ describe(StylistShift) do
     end
   end
 
+  describe('#update') do
+    it('lets user update a stylist shift in the database') do
+      stylist_shift1 = StylistShift.new({:id => nil, :mon => "t", :tue => "t", :wed => "f", :thu => "f", :fri => "f", :client_appt => "monday", :client_id => 1, :stylist_id => 1})
+      stylist_shift1.save()
+      stylist_shift1.update({:id => nil, :mon => "f", :tue => "f", :wed => "t", :thu => "t", :fri => "t", :client_appt => "monday", :client_id => 1, :stylist_id => 1})
+      expect(stylist_shift1.mon()).to(eq('f'))
+    end
+  end
+
 end

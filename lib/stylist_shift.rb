@@ -50,4 +50,21 @@ class StylistShift
     found_stylist_shift
   end
 
+  define_method(:update) do |attributes|
+    @id = self.id()
+    @mon = attributes.fetch(:mon)
+    @tue = attributes.fetch(:tue)
+    @wed = attributes.fetch(:wed)
+    @thu = attributes.fetch(:thu)
+    @fri = attributes.fetch(:fri)
+    @client_appt = attributes.fetch(:client_appt)
+    @client_id = attributes.fetch(:client_id)
+    @stylist_id = attributes.fetch(:stylist_id)
+    DB.exec("UPDATE stylist_shifts SET mon = '#{@mon}', tue = '#{@tue}', wed = '#{@wed}', thu = '#{@thu}', fri = '#{@fri}', client_appt = '#{@client_appt}', client_id = #{@client_id}, stylist_id = '#{@stylist_id}' WHERE id = #{@id};")
+  end
+#
+# define_method(:delete) do
+#   DB.exec("DELETE FROM books WHERE id = #{self.id()};")
+# end
+
 end

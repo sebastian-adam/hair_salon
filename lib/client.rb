@@ -44,4 +44,14 @@ class Client
     found_client
   end
 
+  define_method(:update) do |attributes|
+    @id = self.id()
+    @first_name = attributes.fetch(:first_name)
+    @last_name = attributes.fetch(:last_name)
+    @phone_num = attributes.fetch(:phone_num)
+    @typical_package = attributes.fetch(:typical_package)
+    @stylist_id = attributes.fetch(:stylist_id)
+    DB.exec("UPDATE clients SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone_num = '#{@phone_num}', typical_package = '#{@typical_package}', stylist_id = '#{@stylist_id}' WHERE id = #{@id};")
+  end
+
 end

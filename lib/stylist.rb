@@ -40,4 +40,12 @@ class Stylist
     found_stylist
   end
 
+  define_method(:update) do |attributes|
+    @id = self.id()
+    @first_name = attributes.fetch(:first_name)
+    @last_name = attributes.fetch(:last_name)
+    @phone_num = attributes.fetch(:phone_num)
+    DB.exec("UPDATE stylists SET first_name = '#{@first_name}', last_name = '#{@last_name}', phone_num = '#{@phone_num}' WHERE id = #{@id};")
+  end
+
 end
